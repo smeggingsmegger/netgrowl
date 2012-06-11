@@ -60,7 +60,7 @@ Simply add its contents to your .bashrc file::
 
 rc_growl_long
 ~~~~~~~~~~~~~
-In conjunction with the included .preexec.bash script, you can growl only commands that take more than n seconds::
+In conjunction with the included .preexec.bash script, you can growl every time a command finishes in more than n seconds::
 
   $ cp .preexec.bash ~
   $ cat rc_growl_long >> ~/.bashrc
