@@ -10,7 +10,9 @@ The original authors are listed within the file.
 Usage
 -----
 
-Usage: ./netgrowl.py [-hs] [-H hostname] [-t title] [-d description] [-p priority] [-x password]
+Usage::
+
+  $ ./netgrowl.py [-hs] [-H hostname] [-t title] [-d description] [-p priority] [-x password]
 
 Send Growl messages over UDP
 
