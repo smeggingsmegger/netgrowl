@@ -1,0 +1,41 @@
+
+
+########### Growl when long-running commands finish ###########
+# Source: http://hints.macworld.com/article.php?story=20071009124425468
+export PREEXEC_EXCLUDE_LIST=()
+. ~/.preexec.bash
+
+# called before each command and starts stopwatch
+function preexec () {
+        export PREEXEC_CMD="$BASH_COMMAND"
+        export PREEXEC_TIME=$(date +'%s')
+}
+
+# called after each command, stops stopwatch
+# and notifies if time elpsed exceeds threshold
+function precmd () {
+        stop=$(date +'%s')
+        start=${PREEXEC_TIME:-$stop}
+        let elapsed=$stop-$start
+        max=${PREEXEC_MAX:-1}
+        export PREEXEC_TIME=""
+
+        # Check against exclude list
+        excluded="False"
+        for i in "${PREEXEC_EXCLUDE_LIST[@]}"; do
+            LEN=${#i}
+            # If the beginning of the command matches an exclusion, then get outta here.
+            if [[ "${PREEXEC_CMD:0:$LEN}" == "$i" ]]; then
+                return 0
+            fi
+        done
+
+        if [ $elapsed -gt $max ]; then
+            REMOTE_IP=$(echo $SSH_CLIENT | cut -d\  -f 1)
+            python2.7 ~/netgrowl/netgrowl.py -H $REMOTE_IP -x "asdf" -t "XEN Task Finished" -d "${PREEXEC_CMD:-Some Command}
+
+Took $elapsed seconds"
+        fi
+}
+
+preexec_install
