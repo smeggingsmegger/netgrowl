@@ -105,7 +105,7 @@ class GrowlRegistrationPacket:
     self.defaults = [] # array of indexes into notifications
     self.application = application.encode("utf-8")
     self.password = password
-    print password
+    # print password
   # end def
 
   def addNotification(self, notification="Command-Line Growl Notification", enabled=True):
