@@ -14,13 +14,13 @@ Usage: ./netgrowl.py [-hs] [-H hostname] [-t title] [-d description] [-p priorit
 
 Send Growl messages over UDP
 
- * -h help 
- * -H specify host 
- * -t title
- * -d description
- * -p priority [-2 to 2]
- * -s make sticky
- * -x password
+-h  help 
+-H  specify host 
+-t  title
+-d  description
+-p  priority [-2 to 2]
+-s  make sticky
+-x  password
 
 
 This script is supplied as is.
@@ -30,9 +30,11 @@ Setup
 On the Mac machine that will receive the growls:
 
 - Growl PrefPane > Network:
- - Check "Listen for incoming notifications"
- - Check "Allow remote application registration"
- - Specify Server Password (and supply it in the code snippets you choose to use)
+
+  + Check "Listen for incoming notifications"
+  + Check "Allow remote application registration"
+  + Specify Server Password (and supply it in the code snippets you choose to use)
+
 - You may need to restart Growl
 
 Integration Snippets
@@ -62,7 +64,10 @@ In conjunction with the included .preexec.bash script, you can growl only comman
   $ cat rc_growl_long >> ~/.bashrc
   $ source ~/.bashrc
 
-There is also a customizable list of commands to exclude. You don't usually care to know that you quit vim or less.
+At the top of the snippet, you can modify:
+
+- ``PREEXEC_MAX``:  The number of seconds
+- ``PREEXEC_EXCLUDE_LIST``:  A list of commands to exclude. You don't usually care to know that you quit vim or less.
 
 See this thread for more information on the preexec script:
 http://hints.macworld.com/article.php?story=20071009124425468
