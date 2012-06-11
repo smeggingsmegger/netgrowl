@@ -74,4 +74,6 @@ http://hints.macworld.com/article.php?story=20071009124425468
 
 Of Note:
 ~~~~~~~~
-Depending on the directory you clone this into, you may need to correct the path to netgrowl.py in the snippets
+- Depending on the directory you clone this into, you may need to correct the path to netgrowl.py in the snippets
+- When using the preexec hooks, be careful not to source your bashrc more than once.
+  You may end up getting duplicate growl notifications every time.
