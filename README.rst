@@ -3,7 +3,7 @@ netgrowl.py
 
 This is a very simple script for sending Growl messages using Python to a Growl listener.
 
-It has no dependancies except Python.  It has been tested with Python 2.6.*, 2.7.2
+It has no dependancies except Python.  It has been tested with Python 2.6.*, 2.7.2 with Growl 1.2.2
 
 The original authors are listed within the file.
 
