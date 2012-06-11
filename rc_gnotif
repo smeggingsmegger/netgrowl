@@ -4,6 +4,5 @@ function gnotif () {
     DESCR="${1:-}"
     TITLE="${2:-Remote Task Finished}"
     REMOTE_IP=$(echo $SSH_CLIENT | cut -d\  -f 1)
-    echo $REMOTE_IP
     python2.7 ~/netgrowl/netgrowl.py -H $REMOTE_IP -x "asdf" -t "$TITLE" -d "$DESCR"
 }

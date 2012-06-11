@@ -2,7 +2,7 @@
 
 ########### Growl when long-running commands finish ###########
 # Source: http://hints.macworld.com/article.php?story=20071009124425468
-export PREEXEC_EXCLUDE_LIST=()
+export PREEXEC_EXCLUDE_LIST=(vim man less bash top "git diff" "git commit" "git ci" "git log")
 . ~/.preexec.bash
 
 # called before each command and starts stopwatch
@@ -17,7 +17,7 @@ function precmd () {
         stop=$(date +'%s')
         start=${PREEXEC_TIME:-$stop}
         let elapsed=$stop-$start
-        max=${PREEXEC_MAX:-1}
+        max=${PREEXEC_MAX:-10}
         export PREEXEC_TIME=""
 
         # Check against exclude list
@@ -32,7 +32,7 @@ function precmd () {
 
         if [ $elapsed -gt $max ]; then
             REMOTE_IP=$(echo $SSH_CLIENT | cut -d\  -f 1)
-            python2.7 ~/netgrowl/netgrowl.py -H $REMOTE_IP -x "asdf" -t "XEN Task Finished" -d "${PREEXEC_CMD:-Some Command}
+            python2.7 ~/netgrowl/netgrowl.py -H $REMOTE_IP -x "password" -t "Remote Task Finished" -d "${PREEXEC_CMD:-Some Command}
 
 Took $elapsed seconds"
         fi
